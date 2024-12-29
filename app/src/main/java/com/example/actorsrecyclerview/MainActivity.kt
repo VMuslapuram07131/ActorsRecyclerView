@@ -5,6 +5,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.nareshtech.favoriteactors.ActorAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +36,12 @@ class MainActivity : AppCompatActivity() {
         actors.add(Actors(R.drawable.salman, "Salman Khan", 1965))
         actors.add(Actors(R.drawable.vijay, "Vijay Talapathi", 1974))
 
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+        val adapter = ActorAdapter(this, actors)
+        recyclerview.adapter = adapter
+//        recyclerview.layoutManager = LinearLayoutManager(this)
+//        recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        recyclerview.layoutManager = GridLayoutManager(this, 2)
     }
 }
